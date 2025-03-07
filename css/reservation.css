@@ -1,0 +1,158 @@
+.product {
+    margin-top: 5vw;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.product__title {
+    color: #fff;
+    width: 70%;
+    font-size: 4.5vw;
+    font-weight: 900;
+}
+
+.product__container {
+    margin-top: 3vw;
+    width: 70%;
+    height: 35vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product__image {
+    width: 60%;
+    height: 100%;
+    background-color: #14141d;
+    position: relative;
+    display: grid;
+    place-items: center;
+    border-radius: 0.7vw;
+}
+
+.product__image > img {
+    height: 80%;
+}
+
+.product__order {
+    width: 39%;
+    height: 45%;
+    background-color: #14141d;
+    border-radius: 0.7vw;
+    padding: 2vw;
+}
+
+.product__price {
+    color: #fff;
+    font-size: 2vw;
+    font-weight: 800;
+    position: relative;
+}
+
+.product__price > span {
+    position: absolute;
+    transform: translateX(2vw);
+    color: #818181;
+    text-decoration: line-through;
+}
+
+.product__size {
+    margin-top: 1.5vw;
+    width: 100%;
+    height: 30%;
+    display: flex;
+}
+
+.product__size-item {
+    width: 3vw;
+    height: 3vw;
+    border: #fff solid 0.2vw;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 1.2vw;
+    font-weight: 800;
+    margin-right: 1vw;
+    background-color: #14141d;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.product__size-item_active {
+    border: #c7a17a solid 0.2vw;
+    color: #c7a17a;
+}
+
+.product__add-to-cart {
+    margin-top: 1vw;
+    width: 100%;
+    height: 25%;
+    border-radius: 0.5vw;
+    border: none;
+    color: #fff;
+    background-color: #c7a17a;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.description {
+    margin-top: 7vw;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.description__title {
+    font-size: 3vw;
+    margin-bottom: 1.5vw;
+    color: #fff;
+    width: 70%;
+    font-weight: 700;
+}
+
+.description__text-container {
+    border-radius: 0.7vw;
+    width: 70%;
+    background-color: #14141d;
+    padding: 2vw;
+    color: #dfdfdf;
+}
+
+.description__text-container > ul {
+    list-style-type: disc;
+    padding-left: 1vw;
+}
+
+.description__text-container > ul > li {
+    font-size: 1.2vw;
+    margin: 0.2vw;
+}
+
+.others {
+    margin-top: 5vw;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.others__title {
+    margin-bottom: 2vw;
+    width: 70%;
+    color: #fff;
+    font-size: 3.5vw;
+    font-weight: 700;
+}
+
+.others__card-container {
+    width: 70%;
+    height: 25vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1.2vw;
+}
+
+
+
+
+
+
