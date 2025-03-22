@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <!-- <link rel="stylesheet" href="css/adapt.css"> -->
+    <script src="js/script.js"></script>
+    <title>Shop (Couse)</title>
+</head>
+
+<body>
+    <header>
+        <div class="header__language-container">
+            <div class="header__language-actions">
+                <span id="ru-lang" class="header__language-item">RU</span>
+                <span id="en-lang" class="header__language-item header__language-item_active">EN</span>
+            </div>
+            <p class="header__tel">+371000000</p>
+        </div>
+        <div class="header__container">
+            <nav>
+                <a class="nav__link" href="index.html">HOME</a>
+                <a class="nav__link" href="#">ABOUT</a>
+                <a class="nav__link" href="#">MENU</a>
+                <a class="nav__link" href="reservation.html">RESERVATION</a>
+            </nav>
+            <img class="header__logo" src="img/logo.png" alt="">
+            <div class="header__action">
+                <img class="header-icon" src="img/actions__icon/user.png" alt="">
+                <img class="header-icon" src="img/actions__icon/favorite.png" alt="">
+                <img id="cart-svg" class="header-icon" src="img/actions__icon/cart.png" alt="">
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="cart">
+            <div class="cart__list">
+                <h1 class="cart__title">CART</h1>
+                <div class="cart__item-container">
+
+                    <div class="item">
+                        <div class="item__image-container"></div>
+                        <div class="item__text-container">
+                            <div class="item__title-container">
+                                <h1 class="item__title">THE CART IS EMPTY</h1>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="cart__checkout">
+                <div class="cart__price">
+                    <p id="summ-price">Price: <span>$19.99</span></p>
+                    <p id="delivery">Delivery: <span>$10.00</span></p>
+                    <p class="total-price">Total Price: <span>$29.99</span></p>
+                    <button class="cart__button">CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer__content">
+            <div class="footer__logo"><img src="img/footer-logo.png" alt=""></div>
+            <div class="footer__links">
+                <a href="index.html">HOME</a>
+                <a href="#">ABOUT</a>
+                <a href="#">MENU</a>
+                <a href="reservation.html">RESERVATION</a>
+            </div>
+            <div class="footer__links">
+                <a href="#">CONTACTS</a>
+                <a href="#">PRIVACY POLICY</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const emptyCart = `
+                    <div class="item">
+                        <div class="item__image-container"></div>
+                        <div class="item__text-container">
+                            <div class="item__title-container">
+                                <h1 class="item__title">THE CART IS EMPTY</h1>
+                            </div>
+                        </div>
+                    </div>
+        `
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let productsListParse = localStorage.getItem("productsList")
+            let productsList = []
+            const cardItemContainer = document.querySelector(".cart__item-container")
+
+            if (productsListParse) {
+                try {
+                    productsList = JSON.parse(productsListParse)
+                } catch (error) {
+                    console.log(`Ошибка в JSON.parse : ${error}`);
+                }
+            }
+            if (productsList.length == 0) {
+                cardItemContainer.innerHTML = emptyCart
+            } else {
+                cardItemContainer.innerHTML = ""
+                productsList.forEach(product => {
+                    itemIMG = product.image
+                    itemSIZE = product.size
+                    itemPRICE = product.price
+                    itemID = product.id
+
+                    const productCard = `
+                                <div class="item">
+                                    <div class="item__image-container">
+                                        <img class="item__image" src="${itemIMG}" alt="">
+                                    </div>
+                                    <div class="item__text-container">
+                                        <div class="item__title-container">
+                                            <h1 class="item__title">LAVAZZA CREMA E GUSTO</h1>
+                                            <img class="item__delcart" id="${itemID}" src="img/delcart.png" alt="">
+                                        </div>
+                                        <p class="item__size">${itemSIZE}</p>
+                                        <div class="item__price-container">
+                                            <p>Quantity: 1</p>
+                                            <p class="item__price">${itemPRICE}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                    `
+
+                    cardItemContainer.insertAdjacentHTML("beforeend", productCard)
+                })
+            }
+            const delCardButtons = document.querySelectorAll(".item__delcart")
+            delCardButtons.forEach(delCard => {
+                delCard.addEventListener("click", () => {
+                    const delCardID = delCard.id
+                    const productIndex = productsList.findIndex(product => product.id == delCardID)
+
+                    if (productIndex != -1) {
+                        productsList.splice(productIndex, 1)
+                        localStorage.setItem("productsList", JSON.stringify(productsList))
+                        location.reload()
+                    } else {
+                        console.log(`Не нашлось товара с ID: ${delCardID}`)
+                    }
+                })
+            })
+
+            const itemPrices = document.querySelectorAll(".item__price")
+            let summPrice = 0
+            const priceShow = document.querySelector("#summ-price > span")
+            const totalPriceShow = document.querySelector(".total-price > span")
+            const delivery = parseFloat(document.querySelector("#delivery > span").textContent.replace("$", ""))
+
+            itemPrices.forEach(price => {
+                let priceDelSpan = price.innerHTML.replace(/<span[^>]*>.*?<\/span>/g, "")
+                let priceText = priceDelSpan.textContent
+                let priceNum = priceDelSpan.replace("$", "")
+                summPrice += parseFloat(priceNum)
+            })
+
+            let summPriceResult = parseFloat(summPrice.toFixed(2))
+            priceShow.innerHTML = "$" + summPriceResult
+            if (summPriceResult != 0) {
+                totalPriceShow.innerHTML = "$" + (summPriceResult + delivery)
+            } else {
+                totalPriceShow.innerHTML = "$" + 0
+            }
+
+        })
+
+
+    </script>
+
+</body>
+
+</html>

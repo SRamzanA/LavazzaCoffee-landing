@@ -18,7 +18,7 @@ const enLanguageMainHTML = `
             <div class="header__action">
                 <img class="header-icon" src="img/actions__icon/user.png" alt="">
                 <img class="header-icon" src="img/actions__icon/favorite.png" alt="">
-                <img class="header-icon" src="img/actions__icon/cart.png" alt="">
+                <img id="cart-svg" class="header-icon" src="img/actions__icon/cart.png" alt="">
             </div>
         </div>
     </header>
@@ -202,7 +202,7 @@ const ruLanguageMainHTML = `
                 <div class="header__action">
                     <img class="header-icon" src="img/actions__icon/user.png" alt="">
                     <img class="header-icon" src="img/actions__icon/favorite.png" alt="">
-                    <img class="header-icon" src="img/actions__icon/cart.png" alt="">
+                    <img id="cart-svg" class="header-icon" src="img/actions__icon/cart.png" alt="">
                 </div>
             </div>
         </header>

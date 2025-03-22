@@ -188,7 +188,7 @@ main {
     overflow: hidden;
 }
 
-.about__image > img {
+.about__image>img {
     position: absolute;
     height: 100%;
     left: 0;
@@ -200,12 +200,12 @@ main {
     padding: 2vw;
 }
 
-.about__text > h1 {
+.about__text>h1 {
     font-size: 2vw;
     margin-bottom: 0.5vw;
 }
 
-.about__text > p {
+.about__text>p {
     font-size: 1.1vw;
     width: 90%;
     color: #dfdfdf;
@@ -231,7 +231,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1.2vw;
-    perspective: 100vw; /*delete */
+    perspective: 100vw;
 }
 
 .card {
@@ -274,7 +274,7 @@ main {
     transform: rotateY(180deg) translateZ(1px);
 }
 
-.card__back > p {
+.card__back>p {
     font-size: 1.1vw;
     margin-top: 1vw;
     margin-bottom: 5vw;
@@ -297,7 +297,6 @@ main {
     border: #c7a17a solid 0.2vw;
 }
 
-
 .card__reverse {
     transform: rotateY(180deg);
 }
@@ -305,7 +304,6 @@ main {
 .card__backZ {
     backface-visibility: visible;
 }
-
 
 .card__button-back,
 .card__rev-button {
@@ -317,7 +315,6 @@ main {
     cursor: pointer;
     font-size: 1.2vw;
 }
-
 
 .card:hover {
     background-color: #22222f;
@@ -331,7 +328,7 @@ main {
     justify-content: center;
 }
 
-.card__image-container > img {
+.card__image-container>img {
     width: 6vw;
 }
 
@@ -348,19 +345,17 @@ main {
     position: relative;
 }
 
-.card__price > p {
+.card__price>p {
     color: #fff;
     font-size: 1.3vw;
 }
 
-.card__price > p > span {
+.card__price>p>span {
     position: absolute;
     transform: translateX(2vw);
     color: #818181;
     text-decoration: line-through;
 }
-
-/* SVG */
 
 svg {
     cursor: pointer;
@@ -376,9 +371,6 @@ svg {
     fill: red !important;
     stroke: red !important;
 }
-
-
-/*  */
 
 .news {
     width: 100%;
@@ -408,7 +400,7 @@ svg {
     transition: 0.4s;
     cursor: default;
     overflow: hidden;
-    
+
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -430,18 +422,18 @@ svg {
     justify-content: center;
 }
 
-.new__image > img {
+.new__image>img {
     position: absolute;
     height: 100%;
 }
 
-.new__item > h1 {
+.new__item>h1 {
     color: #fff;
     font-size: 2vw;
     margin: 1vw
 }
 
-.new__item > p {
+.new__item>p {
     color: #fff;
     font-size: 1.1vw;
     margin: 1vw;
@@ -469,7 +461,7 @@ footer {
     width: 33%;
 }
 
-.footer__logo > img {
+.footer__logo>img {
     height: 5vw;
 }
 
@@ -481,14 +473,10 @@ footer {
     align-items: flex-start;
 }
 
-.footer__links > a {
+.footer__links>a {
     text-decoration: none;
     color: #fff;
     margin: 0.5vw;
     font-weight: 700;
     font-size: 1.2vw;
 }
-
-
-
-
